@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useInView, useMotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useInView } from 'framer-motion';
+import ScrollSauceExperience from './ScrollSauceExperience';
 
 const testimonials = [
   {
@@ -136,9 +137,9 @@ export default function TestimonialsContact() {
   const floatY2 = useTransform(scrollYProgress, [0, 1], [-50, 50]);
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden mt-32 md:mt-48 lg:mt-64">
+    <section ref={containerRef} className="relative mt-32 md:mt-48 lg:mt-64">
       {/* ─── TESTIMONIALS ─── */}
-      <div className="relative py-40 px-6">
+      <div className="relative py-40 px-6 overflow-hidden">
         {/* Ambient 3D Background */}
         <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 scale-110 origin-top">
           <img src="/images/restaurant-interior.jpg" alt="" className="w-full h-full object-cover opacity-15" />
@@ -235,8 +236,12 @@ export default function TestimonialsContact() {
           </div>
         </div>
       </div>
+
+      {/* ─── SCROLL SAUCE EXPERIENCE ─── */}
+      <ScrollSauceExperience />
+
       {/* ─── CONTACT ─── */}
-      <div className="relative py-32 px-6 overflow-hidden">
+      <div className="relative pt-10 pb-32 px-6 overflow-hidden">
         {/* Glow orbs */}
         <motion.div style={{ y: floatY2 }} className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[150px] pointer-events-none" />
         <motion.div style={{ y: floatY1 }} className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[120px] pointer-events-none" />
