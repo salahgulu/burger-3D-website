@@ -9,7 +9,7 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onOpenModal }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -55,14 +55,16 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Order CTA */}
-        <div className="hidden md:block">
-          <a
-            href="#menu"
+        {/* Right Actions */}
+        <div className="hidden md:flex items-center gap-4">
+          <button
+            onClick={() => {
+              onOpenModal();
+            }}
             className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-red-600 text-white text-sm font-semibold rounded-full hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 active:scale-95"
           >
-            Order Now
-          </a>
+            Reserve Table
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -106,12 +108,15 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#menu"
-                className="mt-2 text-center px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold rounded-full"
+              <button
+                onClick={() => {
+                  setMobileOpen(false);
+                  onOpenModal();
+                }}
+                className="mt-2 w-full text-center px-6 py-3 bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold rounded-full hover:shadow-lg transition-all"
               >
-                Order Now
-              </a>
+                Reserve Table
+              </button>
             </div>
           </motion.div>
         )}
